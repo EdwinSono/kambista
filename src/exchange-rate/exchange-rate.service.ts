@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { ExchangeRate } from './interfaces/exchange-rate.interface';
+import { IExchangeRate } from './interfaces/exchange-rate.interface';
 import { ExchangeRateDto } from './dto/exchange-rate.dto';
 import { ExchangeRateList } from './interfaces/exchange-rate-list.interface';
 import * as fs from 'fs';
@@ -36,7 +36,7 @@ export class ExchangeRateService {
     return amount * exchangeRate;
   }
 
-  calculateExchangeRate(payload: ExchangeRate): ExchangeRateDto {
+  calculateExchangeRate(payload: IExchangeRate): ExchangeRateDto {
     this.loadExchangeRateList();
 
     const amountSource: number = payload.source_amount;
