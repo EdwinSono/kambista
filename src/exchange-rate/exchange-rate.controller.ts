@@ -1,4 +1,12 @@
-import { Controller, Post, Body, HttpStatus, HttpCode } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Body,
+  HttpStatus,
+  HttpCode,
+  UseGuards,
+} from '@nestjs/common';
+import { AuthGuard } from '../auth/auth.guard';
 import {
   ApiBearerAuth,
   ApiOperation,
@@ -16,6 +24,7 @@ export class ExchangeRateController {
   constructor(private readonly appService: ExchangeRateService) {}
 
   @Post('/calculate')
+  @UseGuards(AuthGuard)
   @HttpCode(HttpStatus.OK)
   @ApiOperation({ summary: 'Calculate exchange rate' })
   @ApiResponse({
