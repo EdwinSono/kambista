@@ -5,6 +5,7 @@ import {
   HttpStatus,
   HttpCode,
   UseGuards,
+  BadRequestException,
 } from '@nestjs/common';
 import { AuthGuard } from '../auth/auth.guard';
 import {
@@ -32,9 +33,12 @@ export class ExchangeRateController {
     description: 'Tipo de cambio calculado exitosamente',
     type: ExchangeRateDto,
   })
-  @ApiResponse({ status: 403, description: 'Forbidden.' })
-  @ApiResponse({ status: 404, description: 'Tipo de cambio no encontrado' })
-  calculateExchangeRate(@Body() payload: ExchangeRate): ExchangeRateDto {
+  @ApiResponse({ status: 401, description: 'Unauthorized' })
+  @ApiResponse({ status: 400, description: 'Bad Request' })
+  @ApiResponse({ status: 404, description: 'Exchange rate not found' })
+  calculateExchangeRate(@Body() payload: ExchangeRate): ExchangeRateDto | any {
+    if (isNaN(payload.source_amount))
+      throw new BadRequestException(`${payload.source_amount} is not a number`);
     return this.appService.calculateExchangeRate(payload);
   }
 }

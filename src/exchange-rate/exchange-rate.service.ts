@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { IExchangeRate } from './interfaces/exchange-rate.interface';
 import { ExchangeRateDto } from './dto/exchange-rate.dto';
 import { ExchangeRateList } from './interfaces/exchange-rate-list.interface';
@@ -48,10 +48,9 @@ export class ExchangeRateService {
       currencyDestination,
     );
     if (!exchangeRate) {
-      console.error(
+      throw new NotFoundException(
         `Tipo de cambio no encontrado para ${currencySource} a ${currencyDestination}.`,
       );
-      return null;
     }
 
     const destinationAmount: number | null = this.convertCurrencyDestination(
