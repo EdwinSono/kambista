@@ -1,0 +1,44 @@
+{
+  "exchangeRate": [
+    {
+      "source_currency": "USD",
+      "destination_currency": "EUR",
+      "exchange_type": 0.85
+    },
+    {
+      "source_currency": "USD",
+      "destination_currency": "GBP",
+      "exchange_type": 0.75
+    },
+    {
+      "source_currency": "USD",
+      "destination_currency": "PEN",
+      "exchange_type": 4.00
+    },
+    {
+      "source_currency": "EUR",
+      "destination_currency": "JPY",
+      "exchange_type": 130.25
+    },
+    {
+      "source_currency": "GBP",
+      "destination_currency": "USD",
+      "exchange_type": 1.33
+    },
+    {
+      "source_currency": "JPY",
+      "destination_currency": "EUR",
+      "exchange_type": 0.0077
+    },
+    {
+      "source_currency": "PEN",
+      "destination_currency": "USD",
+      "exchange_type": 0.26569296
+    },
+    {
+      "source_currency": "PEN",
+      "destination_currency": "EUR",
+      "exchange_type": 0.24
+    }
+  ]
+}
