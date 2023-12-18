@@ -1,5 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ExchangeRateService } from './exchange-rate.service';
+import { NotFoundException } from '@nestjs/common';
 
 describe('ExchangeRateService', () => {
   let service: ExchangeRateService;
@@ -18,7 +19,6 @@ describe('ExchangeRateService', () => {
 
   describe('calculateExchangeRate', () => {
     it('should calculate exchange rate successfully', () => {
-      // Mock data or use actual data for testing
       const payload = {
         source_amount: 10,
         source_currency: 'PEN',
@@ -26,25 +26,20 @@ describe('ExchangeRateService', () => {
       };
 
       const result = service.calculateExchangeRate(payload);
-
-      // Add your assertions based on the expected result
       expect(result).toBeDefined();
-      // Add more assertions as needed
     });
 
     it('should handle case where exchange rate is not found', () => {
-      // Mock data or use actual data for testing
       const payload = {
         source_amount: 10,
         source_currency: 'PEN',
         destination_currency: 'InvalidCurrency',
       };
 
-      const result = service.calculateExchangeRate(payload);
-
-      // Add your assertions based on the expected result when rate is not found
-      expect(result).toBeNull();
-      // Add more assertions as needed
+      const calculateExchangeRate = () => {
+        service.calculateExchangeRate(payload);
+      };
+      expect(calculateExchangeRate).toThrow(NotFoundException);
     });
   });
 });

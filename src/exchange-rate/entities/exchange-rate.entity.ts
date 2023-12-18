@@ -1,11 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNumber, IsString } from 'class-validator';
+import { IsNumber, IsString, IsNotEmpty, IsPositive } from 'class-validator';
 export class ExchangeRate {
   @ApiProperty({
     description: 'Moneda origen',
     example: 'PEN',
   })
   @IsString()
+  @IsNotEmpty()
   source_currency: string;
 
   @ApiProperty({
@@ -13,6 +14,7 @@ export class ExchangeRate {
     example: 1,
   })
   @IsNumber()
+  @IsPositive()
   source_amount: number;
 
   @ApiProperty({
