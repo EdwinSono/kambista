@@ -1,0 +1,65 @@
+{
+	"info": {
+		"_postman_id": "675cdc6e-8903-4ef2-bd0c-a98f185e1ed4",
+		"name": "exchange-rate",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2506699"
+	},
+	"item": [
+		{
+			"name": "exchange-rate/calculate",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHAiOiJLYW1iaXN0YSIsIm5hbWUiOiJlZHdpbnNvbm8ifQ.TdRVi4hMZSMmPoZAoXE85rRehe24-pvn1KzMO9zgmwk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"source_currency\": \"PEN\",\n    \"source_amount\": 4,\n    \"destination_currency\": \"USD\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/exchange-rate/calculate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"exchange-rate",
+						"calculate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "hello",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000"
+				}
+			},
+			"response": []
+		}
+	]
+}
